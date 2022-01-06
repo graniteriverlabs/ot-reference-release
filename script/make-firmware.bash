@@ -306,7 +306,7 @@ deploy_ncs()
     cd nrf
     git fetch origin
     git reset --hard "$commit_hash" || die "ERROR: unable to checkout the specified sdk-nrf commit."
-    west update -n -o=--depth=1
+    west update
     cd ..
     pip3 install --user -r zephyr/scripts/requirements.txt
     pip3 install --user -r nrf/scripts/requirements.txt
@@ -324,6 +324,10 @@ package_ncs()
     distribute "/tmp/ncs_cli_1_1/zephyr/zephyr.hex" "ot-cli-ftd" "1.1" "${timestamp}" "${commit_id}"
     distribute "/tmp/ncs_cli_1_2/zephyr/zephyr.hex" "ot-cli-ftd" "1.2" "${timestamp}" "${commit_id}"
     distribute "/tmp/ncs_rcp_1_2/zephyr/zephyr.hex" "ot-rcp" "1.2" "${timestamp}" "${commit_id}"
+    # 1_3 options
+    distribute "/tmp/ncs_rcp_1_3/zephyr/zephyr.hex" "ot-rcp" "1.3" "${timestamp}" "${commit_id}"
+    distribute "/tmp/ncs_cli_1_3/zephyr/zephyr.hex" "ot-cli-ftd" "1.3" "${timestamp}" "${commit_id}"
+    # 1_3 options
 }
 
 build_ncs()
@@ -335,7 +339,14 @@ build_ncs()
   local cli_1_1=("/tmp/ncs_cli_1_1" "samples/openthread/cli/" "${script_dir}/../config/ncs/overlay-cli-1_1.conf")
   local cli_1_2=("/tmp/ncs_cli_1_2" "samples/openthread/cli/" "${script_dir}/../config/ncs/overlay-cli-1_2.conf")
   local rcp_1_2=("/tmp/ncs_rcp_1_2" "samples/openthread/coprocessor/" "${script_dir}/../config/ncs/overlay-rcp-1_2.conf")
-  local variants=(cli_1_1[@] cli_1_2[@] rcp_1_2[@])
+  # 1_3 options
+  local rcp_1_3=("/tmp/ncs_rcp_1_3" "samples/openthread/coprocessor/" "${script_dir}/../config/ncs/overlay-rcp-1_3.conf")
+  local cli_1_3=("/tmp/ncs_cli_1_3" "samples/openthread/cli/" "${script_dir}/../config/ncs/overlay-cli-1_3.conf")
+  # 1_3 options
+  
+  #local variants=(cli_1_1[@] cli_1_2[@] rcp_1_2[@])
+  local variants=(cli_1_1[@] cli_1_2[@] rcp_1_2[@] rcp_1_3[@] cli_1_3[@])
+  # 1_3 options
 
   cd nrf
   for variant in ${variants[@]}; do
@@ -345,6 +356,10 @@ build_ncs()
   package_ncs "ot-cli-ftd" "1.1"
   package_ncs "ot-cli-ftd" "1.2"
   package_ncs "ot-rcp" "1.2"
+  # 1_3 options
+  package_ncs "ot-rcp" "1.3"
+  package_ncs "ot-cli-ftd" "1.3"
+  # 1_3 options
 }
 
 main()
