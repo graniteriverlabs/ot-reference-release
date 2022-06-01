@@ -1,6 +1,5 @@
 # ot-reference-release
 
-
 ## Usage
 
 Clone this repository:
@@ -38,6 +37,7 @@ $ REFERENCE_PLATFORM=nrf52840 REFERENCE_RELEASE_TYPE=certification IN_CHINA=1 SD
 ```
 
 When `REFERENCE_RELEASE_TYPE` is `certification`, reference release contains following components:
+
 - Raspberry Pi image containing OTBR service and OT Commissioner
 - Firmware
 - THCI
@@ -45,12 +45,14 @@ When `REFERENCE_RELEASE_TYPE` is `certification`, reference release contains fol
 - Quick start guide
 
 When `REFERENCE_RELEASE_TYPE` is `1.3`, reference release contains following components:
+
 - Raspberry Pi image containing OTBR service with border routing feature and service registry feature
 - Firmware
 - Change log
 - Quick start guide
 
 **Note**: Currently, only the following boards are supported for CLI/RCP firmwares:
+
 - nRF52840 dongles
 - EFR32MG12 BRD4166A boards
 
@@ -68,10 +70,8 @@ Please only use the OpenThread name and marks when accurately referencing this s
 
 # Need help?
 
-There are numerous avenues for OpenThread support:
+OpenThread support is available on GitHub:
 
-- Bugs and feature requests — [submit to the Issue Tracker](https://github.com/openthread/ot-reference-release/issues)
-- Stack Overflow — [post questions using the `openthread` tag](http://stackoverflow.com/questions/tagged/openthread)
-- Google Groups — [discussion and announcements at openthread-users](https://groups.google.com/forum/#!forum/openthread-users)
-
-The openthread-users Google Group is the recommended place for users to discuss OpenThread and interact directly with the OpenThread team.
+- Bugs and feature requests pertaining to the Reference Release — [submit to the openthread/ot-reference-release Issue Tracker](https://github.com/openthread/ot-reference-release/issues)
+- OpenThread bugs and feature requests — [submit to the OpenThread Issue Tracker](https://github.com/openthread/openthread/issues)
+- Community Discussion - [ask questions, share ideas, and engage with other community members](https://github.com/openthread/openthread/discussions)
